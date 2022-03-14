@@ -1,0 +1,29 @@
+*** AULA 1 - O que são Testes de Integração? ***
+
+1. Vimos no último vídeo que os testes de integração, idealmente, deveriam ser escritos em menor proporção do que
+os testes de unidade. Quais as motivações para isso?
+• O tempo maior para execução. (Testes de integração tem um tempo de execução maior do que os testes de unidade.)
+• O custo maior para manutenção. (Testes de integração costumam ser mais difíceis de escrever e manter, por conta
+da complexidade maior.)
+da complexidade maior.)
+
+
+A pirâmide de testes é um estudo que demonstra os diferentes tipos de testes automatizados e suas vantagens e
+desvantagens.
+
+Artigo que demonstra tal estudo neste link: https://martinfowler.com/articles/practical-test-pyramid.html
+
+Nesta aula, aprendemos:
+
+   • Os diferentes tipos de testes automatizados que podemos escrever em uma aplicação;
+   • A pirâmide de testes, de maneira bem resumida;
+   • A configurar o projeto que será utilizado neste treinamento.
+
+
+*** AULA 2 - Preparando o projeto para os testes ***
+
+1. Hoje em dia é muito comum a utilização de frameworks que realizam injeção de dependências nas classes.
+Do ponto de vista dos testes automatizados, qual cuidado devemos ter ao utilizar tal recurso em uma aplicação?
+    • Sempre que possível utilizar injeção de dependências via construtor (Utilizar o construtor de uma classe para
+    receber suas dependências favorece bastante a escrita de testes automatizados.)
+
