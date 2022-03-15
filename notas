@@ -27,3 +27,14 @@ Do ponto de vista dos testes automatizados, qual cuidado devemos ter ao utilizar
     • Sempre que possível utilizar injeção de dependências via construtor (Utilizar o construtor de uma classe para
     receber suas dependências favorece bastante a escrita de testes automatizados.)
 
+2. Por que não é uma boa prática utilizar a mesma base de dados da aplicação nos testes de integração?
+    • Os dados da aplicação podem influenciar nos testes, fazendo com que eles falhem (O ideal é sempre utilizar outra
+    base de dados separada, exclusiva para a execução dos testes.)
+
+
+Nesta aula, aprendemos:
+
+    • Que às vezes precisamos adaptar o nosso código para poder escrever os teste automatizados;
+    • Que devemos preferir injeção de dependências via construtor, para facilitar na escrita dos testes automatizados;
+    • A realizar as configurações da JPA para a execução dos testes de integração.
+
