@@ -6,15 +6,14 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 public class UsuarioDaoTest {
 
     private UsuarioDao dao;
 
-    private EntityManager em;
-
     @Test
-    void testeBuscaUsuarioPeloUsername() {
+    void deveriaEncontrarUsuarioCadastrado() {
         EntityManager em = JPAUtil.getEntityManager();
         this.dao = new UsuarioDao(em);
 
@@ -25,5 +24,18 @@ public class UsuarioDaoTest {
 
         Usuario encontrado = this.dao.buscarPorUsername(usuario.getNome());
         Assert.assertNotNull(encontrado);
+    }
+
+    @Test
+    void naoDeveriaEncontrarUsuarioNaoCadastrado() {
+        EntityManager em = JPAUtil.getEntityManager();
+        this.dao = new UsuarioDao(em);
+
+        Usuario usuario = new Usuario("fulano", "fulano@email.com", "12345678");
+        em.getTransaction().begin();
+        em.persist(usuario);
+        em.getTransaction().commit();
+
+        Assert.assertThrows(NoResultException.class, () -> this.dao.buscarPorUsername("beltrano"));
     }
 }
