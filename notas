@@ -38,3 +38,17 @@ Nesta aula, aprendemos:
     • Que devemos preferir injeção de dependências via construtor, para facilitar na escrita dos testes automatizados;
     • A realizar as configurações da JPA para a execução dos testes de integração.
 
+
+*** AULA 3 - Organização do código de teste ***
+
+1. Por que é importante organizar os códigos de testes, seguindo boas práticas e padrões de projeto?
+    • Para facilitar a manutenção. (O código de teste também vai precisar de manutenção, portanto é importante que
+    ele seja fácil de manter)
+
+
+Nesta aula, aprendemos:
+
+    • A escrever outros cenários de testes;
+    • A como utilizar os recursos do JUnit para organizar o código de testes;
+    • A importância de manter o código de testes bem organizado e fácil de manter.
+
