@@ -52,3 +52,10 @@ Nesta aula, aprendemos:
     • A como utilizar os recursos do JUnit para organizar o código de testes;
     • A importância de manter o código de testes bem organizado e fácil de manter.
 
+
+*** AULA 4 - Testando métodos de escrits ***
+
+1. Por que nos métodos de escrita precisamos iniciar uma transação?
+    • Para que a JPA pudesse sincronizar as escritas com o banco de dados. (Alguns métodos, como os que fazem insert,
+    update e delete, vão exigir uma transação ativa.)
+
