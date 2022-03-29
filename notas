@@ -59,3 +59,15 @@ Nesta aula, aprendemos:
     • Para que a JPA pudesse sincronizar as escritas com o banco de dados. (Alguns métodos, como os que fazem insert,
     update e delete, vão exigir uma transação ativa.)
 
+2. Discutimos na última aula que alguns métodos, como os que fazem delete, insert e update, não são recomendados de
+serem testados. Por qual motivo não deveríamos testar tais métodos?
+    • Para evitar testes redundantes. (Quando tais métodos apenas delegam para a JPA, sem possuir nenhum tipo de
+    lógica, os testes se tornam redundantes, uma vez que estávamos testando a JPA em si e não a aplicação.)
+
+
+Nesta aula, aprendemos:
+
+    A escrever testes de métodos de escrita no banco de dados;
+    A lidar com transação na escrita dos testes;
+    A como identificar e evitar escrever testes desnecessários.
+
