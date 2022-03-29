@@ -67,7 +67,59 @@ serem testados. Por qual motivo não deveríamos testar tais métodos?
 
 Nesta aula, aprendemos:
 
-    A escrever testes de métodos de escrita no banco de dados;
-    A lidar com transação na escrita dos testes;
-    A como identificar e evitar escrever testes desnecessários.
+    • A escrever testes de métodos de escrita no banco de dados;
+    • A lidar com transação na escrita dos testes;
+    • A como identificar e evitar escrever testes desnecessários.
+
+*** AULA 5 - Test Data Builder ***
+
+1. Vimos no último vídeo como criar e utilizar uma classe que segue o padrão Teste Data Builder.
+   Quais as vantagens de se utilizar tal padrão na escrita dos testes automatizados?
+
+   • Melhorar a legibilidade do código de teste (Um Test Data Builder torna o código de teste muito mais legível.)
+   • Evitar códigos duplicados (Podemos reaproveitar os Test Data Builder em diferentes classes de testes, evitando
+   assim a duplicação de código.)
+
+   Nesta aula, aprendemos:
+
+    • A identificar os problemas de códigos duplicados nas classes de testes;
+    • O padrão Test Data Builder;
+    • Como implementar um Test Data Builder.
+
+
+*** RESUMÃO ***
+
+E, recapitulando, nós pegamos esse projeto, que já estava desenvolvido, com certas tecnologias e tinha essas classes
+DAO e precisávamos escrever os testes automatizados dessas classes DAO. Começamos tentando criar um teste automatizado
+e vimos aquele problema, a classe DAO está utilizando framework para fazer injeção de dependências e estava recebendo
+o EntityManager como injeção de dependências no atributo e aí na hora de escrever a classe DAO, não conseguíamos passar
+o EntityManager para fazer o teste.
+
+Tivemos que trocar a injeção de dependências e ao invés de ser pelo atributo, para ser via construtor. E com isso
+conseguimos criar, instanciar o nosso DAO e passar o EntityManager. Então como a aplicação rodando tem o servidor,
+o framework de injeção de dependências e tem toda essa infraestrutura pronta para você. Aqui no teste não temos nada
+disso, então precisamos correr atrás. Então tivemos que criar a classe JPAUtil, isolar a criação do EntityManager,
+pegamos o persistence.xml, com as configurações da JPA para os testes automatizados.
+
+Já pegamos pronto esse XML, na verdade, para não perder muito tempo em detalhes de JPA. Aí conseguimos dar andamento,
+conseguimos escrever nossos testes. Então começamos a escrever os testes, precisávamos criar entidades, criar objetos
+dessas entidades, persistir no banco de dados, chamar os métodos da nossa classe DAO para testarmos, fazer os asserts
+para ver se tudo funcionou corretamente.
+
+Aí começamos a ficar com o código poluído, utilizamos os recursos do próprio JUnit, @BeforeEach, @AfterEach para isolar
+essa infraestrutura que cada teste precisa, a criação do EntityManager, da classe DAO, begin e rollback da transação.
+Depois começamos a testar os métodos de consulta, de exclusão. Testamos também método de insert, de update.
+
+Fizemos aquela discussão que esses métodos de insert, update e delete, que só delegam para a JPA não é muito
+interessante de testar, já que nós não temos código nenhum nosso, só estamos delegando para uma biblioteca que já foi
+testada.
+
+Por fim, fechamos vendo essa questão dos testes Data Builder. Muitos testes vão precisar criar os objetos, várias
+entidades e às vezes uma entidade tem relacionamentos com 3, 4, 6 entidades e aí para escrever o teste de uma entidade
+dessa precisamos ter todas essas outras dependências. Então podemos isolar essa criação dos objetos em classes que
+seguem o padrão builder, que são os testes Data Builder e essa classe tem os métodos bem legíveis do que
+estamos preenchendo.
+
+Os métodos devolvem a própria instância da classe para fazermos o encadeamento de métodos, como fizemos com
+LeilaoBuilder, .comNome, .comValorInicial. Então o método de teste fica bem legível, fica bem fácil de entender.
 
